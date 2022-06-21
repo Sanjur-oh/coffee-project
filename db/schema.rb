@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_21_010122) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_21_204625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shop_coffees", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "image"
+    t.integer "price"
+    t.bigint "shop_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_shop_coffees_on_shop_id"
+    t.index ["user_id"], name: "index_shop_coffees_on_user_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -22,4 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_010122) do
     t.string "password_digest"
   end
 
+  add_foreign_key "shop_coffees", "shops"
+  add_foreign_key "shop_coffees", "users"
 end
