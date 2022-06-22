@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :shop_coffees
-  resources :shops
+  resources :partner_coffees
+  resources :partners
+  resources :coffees
   resources :users
 
   get '/hello', to: 'application#hello_world'

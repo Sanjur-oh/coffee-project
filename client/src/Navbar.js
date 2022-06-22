@@ -1,15 +1,15 @@
 import logo from "./logo.jpeg";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { useImperativeHandle } from "react";
+// import { useImperativeHandle } from "react";
 
 export default function Navbar() {
     return (
         <nav className="nav">
             <ul>
                     <Link to="/" className="site-title">Tweek Bros</Link> 
-                <li className="active">
-                    <CustomLink to="/store">Store</CustomLink>
-                </li>
+                {/* <li className="active">
+                    <CustomLink to="/login">Login</CustomLink>
+                </li> */}
             </ul>
 
             <ul>
@@ -18,15 +18,15 @@ export default function Navbar() {
                     
             <ul>
                 <li className="active">
-                    <CustomLink to="/login">Login</CustomLink>
+                    <CustomLink to="/coffee">Coffees</CustomLink>
                 </li>
 
-                <li className="active">
+                {/* <li className="active">
                     <CustomLink to="/logout">Logout</CustomLink>
-                </li>
+                </li> */}
 
                 <li className="active">
-                    <CustomLink to="/cart">Cart</CustomLink>
+                    <CustomLink to="/partner">Partners</CustomLink>
                 </li>
             </ul>
         </nav>

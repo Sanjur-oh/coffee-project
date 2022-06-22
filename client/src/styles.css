@@ -71,7 +71,6 @@ body {
     /* animation: spin 6.5s infinite linear; */
 }
 
-
 @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -79,4 +78,18 @@ body {
     100% {
       transform: rotate(360deg);
     }
-  }
+}
+
+/* .image {
+    width: 80%;
+    height: 80px;
+    object-fit: cover;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 15px;
+    /* background: whitesmoke; */
+    /* padding: 5px; */
+    /* width: 200px; */
+    /* height: 400px; */
+ 
+  
