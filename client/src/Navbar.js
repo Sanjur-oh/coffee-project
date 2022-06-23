@@ -1,15 +1,38 @@
 import logo from "./logo.jpeg";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
-// import { useImperativeHandle } from "react";
+import { Link } from "react-router-dom";
+// import { useEffect, useImperativeHandle } from "react";
 
-export default function Navbar() {
+function Navbar({ onLogout }) {
+    function handleClick(){
+        fetch('/cookie_click')
+        .then(res => res.json())
+        .then(console.log)
+    }
+
+ 
+    function handleLogout() {
+        fetch("/logout", {
+        method: "DELETE",
+    }).then(() => onLogout());
+    }
+
+
     return (
         <nav className="nav">
             <ul>
-                    <Link to="/" className="site-title">Tweek Bros</Link> 
-                {/* <li className="active">
-                    <CustomLink to="/login">Login</CustomLink>
-                </li> */}
+                
+                <li className="active">
+                <Link to="/cookie_click" onClick={handleClick}> click </Link>
+                </li>
+
+                <Link to="/" className="site-title"> Tweek Bros </Link> 
+                <li className="active">
+                <Link to="/coffee"> Coffees </Link>
+                </li>
+
+                <li className="active">
+                    <Link to="/partner"> Partners </Link>
+                </li>
             </ul>
 
             <ul>
@@ -18,32 +41,36 @@ export default function Navbar() {
                     
             <ul>
                 <li className="active">
-                    <CustomLink to="/coffee">Coffees</CustomLink>
+                    <Link to="/login"> Login </Link>
                 </li>
-
-                {/* <li className="active">
-                    <CustomLink to="/logout">Logout</CustomLink>
-                </li> */}
-
                 <li className="active">
-                    <CustomLink to="/partner">Partners</CustomLink>
-                </li>
+                    <Link to="/logout" onClick={handleLogout}> Logout </Link>
+                    {/* <button onClick={handleLogout}>Logout</button> */}
+                </li>            
             </ul>
         </nav>
     )
 }
 
-function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to)
-    const isActive = useMatch({path: resolvedPath.pathname, end: true })
-    return (
-        <li className={isActive ? 'active' : ''}>
-            <Link to={to} {...props}>
-                {children}            
-            </Link>
-        </li>
-    )
-}
+export default Navbar
+
+
+
+
+
+
+//, useMatch, useResolvedPath 
+// function CustomLink({ to, children, ...props }) {
+//     const resolvedPath = useResolvedPath(to)
+//     const isActive = useMatch({path: resolvedPath.pathname, end: true })
+//     return (
+//         <li className={isActive ? 'active' : ''}>
+//             <Link to={to} {...props}>
+//                 {children}            
+//             </Link>
+//         </li>
+//     )
+// }
 
 
             // stretch will not have About for a moment

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 
-const Coffee = ({coffee}) => {
+const Coffee = () => {
   const [coffees, setCoffees] = useState([])
 
   const fetchData = () => {
@@ -26,7 +26,7 @@ const Coffee = ({coffee}) => {
             {coffees.map(coffee => (
                 <>
                 <li key={coffee.id}>{coffee.name}</li>
-                <li key={coffee.description}>{coffee.description}</li>
+                {/* <li key={coffee.description}>{coffee.description}</li> */}
                 <img src={coffee.image} alt={coffee.name} className="image" />
                 <Link exact to={`/coffees/${coffee.id}`}><button >View!</button></Link>
                 </>

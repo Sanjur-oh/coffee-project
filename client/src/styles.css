@@ -68,7 +68,7 @@ body {
     border-radius: 200px;
     background: #73AD21;
     padding: 0px;
-    /* animation: spin 6.5s infinite linear; */
+    /* animation: spin 13s infinite linear; */
 }
 
 @keyframes spin {
