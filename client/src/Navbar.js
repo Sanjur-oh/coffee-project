@@ -1,13 +1,14 @@
 import logo from "./logo.jpeg";
 import { Link } from "react-router-dom";
+// import {FaBars, FaTimes} from 'react-icons/fa'
 // import { useEffect, useImperativeHandle } from "react";
 
 function Navbar({ onLogout }) {
-    function handleClick(){
-        fetch('/cookie_click')
-        .then(res => res.json())
-        .then(console.log)
-    }
+    // function handleClick(){
+    //     fetch('/cookie_click')
+    //     .then(res => res.json())
+    //     .then(console.log)
+    // }
 
  
     function handleLogout() {
@@ -20,10 +21,9 @@ function Navbar({ onLogout }) {
     return (
         <nav className="nav">
             <ul>
-                
-                <li className="active">
+                {/* <li className="active">
                 <Link to="/cookie_click" onClick={handleClick}> click </Link>
-                </li>
+                </li> */}
 
                 <Link to="/" className="site-title"> Tweek Bros </Link> 
                 <li className="active">
@@ -36,18 +36,22 @@ function Navbar({ onLogout }) {
             </ul>
 
             <ul>
-                <img src={logo} alt="Tweek Coffee" />
+            {/* <Link to="/"><img src={logo} alt="Tweek Coffee" /></Link> */}
+            <img src={logo} alt="Tweek Coffee" />
             </ul>
                     
             <ul>
-                <li className="active">
+                {/* <li className="active">
                     <Link to="/login"> Login </Link>
-                </li>
+                </li> */}
                 <li className="active">
                     <Link to="/logout" onClick={handleLogout}> Logout </Link>
                     {/* <button onClick={handleLogout}>Logout</button> */}
                 </li>            
             </ul>
+            {/* <div className="hamburger">
+                <FaBars />
+            </div> */}
         </nav>
     )
 }

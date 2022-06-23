@@ -1,37 +1,19 @@
-import React, { useEffect, useState } from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Partner = () => {
-  const [partners, setPartners] = useState([])
-
-  const fetchData = () => {
-    fetch("/partners")
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setPartners(data)
-      })
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
+function Partner({ partners }) {
+  // const renderCoffees = Object.keys(coffees).map((coffeeID) => (
+  //   <li key={coffeeID}>
+  //     <Link to={`/coffees/${coffeeID}`}>{coffees[coffeeID].title}</Link>
+  //   </li>
+  // ));
 
   return (
-    <div>
-      {partners.length > 0 && (
-        <ul>
-          {partners.map(partner => (
-            <li key={partner.id}>{partner.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
+          <div>
+            <p>hello</p>
+          {/* <ul>{renderCoffees}</ul>; */}
+          </div>
   )
 }
 
-export default Partner
-
-// export default function Partner() {
-//     return <h1>Partner</h1>
-// }
+export default Partner;

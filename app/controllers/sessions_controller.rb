@@ -6,13 +6,14 @@ class SessionsController < ApplicationController
      session[:click] += 1
   end
 
+  # method for login
   def create
-    user = User.find_by_username(params[:username])
+    user = User.find_by(username: params[:username])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id #log in and track user
-      render json: user, status: :ok
+      render json: user, status: :created
     else
-      render json: "Invalid credentials", status: :unauthorized
+      render json: "username or password", status: :unauthorized
     end
   end
 
@@ -20,4 +21,5 @@ class SessionsController < ApplicationController
     session.delete :user_id
     head :no_content
   end
+  
 end

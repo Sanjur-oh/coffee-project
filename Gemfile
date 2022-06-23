@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry'
   gem 'listen', '~> 3.3' #added because readme had it
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring" #uncommented because readme had it
