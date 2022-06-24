@@ -62,18 +62,10 @@ function Navbar({ onLogout }) {
 
 export default Navbar;
 
-//, useMatch, useResolvedPath
-// function CustomLink({ to, children, ...props }) {
-//     const resolvedPath = useResolvedPath(to)
-//     const isActive = useMatch({path: resolvedPath.pathname, end: true })
-//     return (
-//         <li className={isActive ? 'active' : ''}>
-//             <Link to={to} {...props}>
-//                 {children}
-//             </Link>
-//         </li>
-//     )
-// }
+
+
+
+
 
 // stretch will not have About for a moment
 

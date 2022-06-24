@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import {  useParams, Link } from "react-router-dom";
 // import olBen from "./olBen.jpg";
 
 function Profile() {
@@ -24,6 +24,24 @@ function Profile() {
     });
   }, [id]);
 
+  function handleDeleteActivity(id) {
+    fetch(`/users/${id}`, {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setUser((users) => {      
+          users.filter((user) => user.id !== id)
+          
+      });
+      }
+    });
+  }
+  
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
+  
+
   if (status === "pending") return <div>"hol up"</div>;
   if (status === "rejected") return <h1>Error: {error.error}</h1>;
 
@@ -31,13 +49,16 @@ function Profile() {
     <section>
       <h2>{user.username}</h2>
       <h2>{user.email}</h2>
+      <button onClick={() => handleDeleteActivity(user.id)}>Delete Account?</button>
+      <button onClick={() => handleDeleteActivity(user.id)}>Update Password</button>
+      {/* <Link onClick={() => handleDeleteActivity(user.id)}>Delete Account?</Link> */}
     </section>
   );
 }
 
 export default Profile;
 
-{/* <img src={olBen} alt="hol up" /> */}
+
 
 
 

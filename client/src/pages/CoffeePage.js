@@ -18,7 +18,7 @@ const CoffeePage = () => {
             <ul>
             {coffees.map((coffee) => (
                 <div>
-                <div key={coffee.id}></div> 
+                <div key={coffee.id}>{coffee.id}</div> 
                 <h2>{coffee.name}</h2>
                 <img src={coffee.image} alt={coffee.name} className="image" />
                 <h1 key={coffee.description}>{coffee.description}</h1>
