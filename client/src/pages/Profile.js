@@ -1,99 +1,82 @@
-function Profile() {
-  return (
-    <>
-      <h1>Profile</h1>
+import { useEffect, useState } from "react";
+import {  useParams } from "react-router-dom";
+// import olBen from "./olBen.jpg";
 
-      <p>
-        This profile page needs to display user info and can update username
-        password or delete account Should not be seen unless logged in
-      </p>
-    </>
+function Profile() {
+  const [{ data: user, error, status }, setUser] = useState({
+    data: null,
+    error: null,
+    status: "pending",
+  });
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`/users/${id}`).then((r) => {
+      if (r.ok) {
+        r.json().then((user) =>
+          setUser({ data: user, error: null, status: "resolved" })
+        );
+      } else {
+        r.json().then((err) =>
+          setUser({ data: null, error: err.error, status: "rejected" })
+        );
+      }
+    });
+  }, [id]);
+
+  if (status === "pending") return <div>"hol up"</div>;
+  if (status === "rejected") return <h1>Error: {error.error}</h1>;
+
+  return (
+    <section>
+      <h2>{user.username}</h2>
+      <h2>{user.email}</h2>
+    </section>
   );
 }
 
 export default Profile;
 
-// import React, { useState } from 'react'
-// // import { BrowserRouter as Router, Link } from "react-router-dom";
-// // import CreateUser from './CreateUser';
+{/* <img src={olBen} alt="hol up" /> */}
 
-// function Login({ handleLogin, setUser, setIsAuthenticated }) {
-//     const [username, setUsername] = useState("");
-//     const [password, setPassword] = useState("");
-//     const [error, setError] = useState("");
 
-//     function refreshPage() {
-//         window.location.reload(false);
-//       }
 
-//     function handleSubmit(e) {
-//         e.preventDefault();
-//         // console.log("hey");
-//         fetch("/login", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({ username, password }),
-//         })
-//         .then(res => {
-//             if(res.ok){
-//               res.json()
-//               .then(user=>{
-//                 setUser(user)
-//                 setIsAuthenticated(true)
-//                 refreshPage()
-//               })
 
-//             } else {
-//               res.json()
-//               .then(json => setError(json.error))
-//             }
-//           })
-//     }
 
-//     return (
-//         <div className="Login">
-//             <header className="Login-header">
-//                 <h1>Welcome</h1>
-//                 <form onSubmit={handleSubmit}>
-//                     <div>
-//                         <label> Username </label>
-//                         <input
-//                             type="text"
-//                             name="username"
-//                             value={username}
-//                             onChange={(e) => setUsername(e.target.value)}
-//                         />
-//                     </div>
-//                     <div>
-//                         <label>Password </label>
-//                         <input
-//                             type="password"
-//                             name="password"
-//                             value={password}
-//                             onChange={(e) => setPassword(e.target.value)}
-//                             required
-//                         />
-//                     </div>
-//                     <div>
-//                         <button className='nav-button' type='submit'>Sign In</button>
-//                     </div>
-//                 </form>
-//             <div>
-//                 <p> Don't have an account? </p>
-//                 {/* <Link to="/create-account">
-//                     <button className='nav-button' type="button">Become A Partner!</button>
-//                 </Link> */}
-//             </div>
-//             </header>
-//             {error?<div>{error}</div>:null}
 
-//         </div>
-//     );
+
+
+
+
+
+
+
+
+
+// // import React, { useEffect, useState } from "react"
+
+
+// function Profile() {
+//   // const [user, setUser] = useState([])
+
+//   // useEffect(() => {
+//   //   fetch(`/user/${id}`)
+//   //   .then((r) => r.json())
+//   //   .then(setUser);
+//   // }, []);
+
+
+//   return (
+//     <>
+//       <h1>Profile</h1>
+
+//       <p>
+//         This profile page needs to display user info and can update username
+//         password or delete account Should not be seen unless logged in
+//       </p>
+//     </>
+//   );
 // }
-// export default Login;
 
-// export default function Login() {
-//     return <h1>Login</h1>
-// }
+// export default Profile;
+

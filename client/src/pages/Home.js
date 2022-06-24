@@ -41,6 +41,7 @@ const handleNewUsername = (e) => {
 };
 
 
+
   function handleSubmit(e) {
     e.preventDefault();
     // console.log("hey");
@@ -88,8 +89,10 @@ const handleNewUsername = (e) => {
         if (newUsername === '' || newEmail === '' || newPassword === '') {
             e.preventDefault();
             setError(true);
+            
         } else {
             setSubmitted(true);
+            refreshPage();
             setError(false);
         }
     };

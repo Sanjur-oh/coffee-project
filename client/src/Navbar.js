@@ -46,11 +46,11 @@ function Navbar({ onLogout }) {
           <Link to="/profile"> Profile </Link>
         </li>
         <li className="active">
-          <Link to="/logout" onClick={handleLogout}>
+          <Link to="/" onClick={handleLogout}>
             {" "}
             Logout{" "}
           </Link>
-          {/* <button onClick={handleLogout}>Logout</button> */}
+          
         </li>
       </ul>
       {/* <div className="hamburger">
