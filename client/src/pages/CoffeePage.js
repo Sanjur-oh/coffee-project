@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const CoffeePage = () => {
   const [coffees, setCoffees] = useState([])
@@ -19,12 +19,14 @@ const CoffeePage = () => {
             {coffees.map((coffee) => (
                 <div>
                 <div key={coffee.id}></div> 
+                <h2>{coffee.name}</h2>
                 <img src={coffee.image} alt={coffee.name} className="image" />
-                <h2>
+                <h1 key={coffee.description}>{coffee.description}</h1>
+                {/* <h2>
                   <Link to={`/coffees/${coffee.id}`}>
                   {coffee.name}
                   </Link>
-                </h2>               
+                </h2>                */}
                 {/* <Link exact to={`/coffees/${coffee.id}`}><button >View!</button></Link> */}
                 </div>
             ))}

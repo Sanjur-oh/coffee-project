@@ -1,3 +1,18 @@
+function Profile() {
+  return (
+    <>
+      <h1>Profile</h1>
+
+      <p>
+        This profile page needs to display user info and can update username
+        password or delete account Should not be seen unless logged in
+      </p>
+    </>
+  );
+}
+
+export default Profile;
+
 // import React, { useState } from 'react'
 // // import { BrowserRouter as Router, Link } from "react-router-dom";
 // // import CreateUser from './CreateUser';
@@ -26,10 +41,10 @@
 //               res.json()
 //               .then(user=>{
 //                 setUser(user)
-//                 setIsAuthenticated(true) 
-//                 refreshPage()               
+//                 setIsAuthenticated(true)
+//                 refreshPage()
 //               })
-              
+
 //             } else {
 //               res.json()
 //               .then(json => setError(json.error))

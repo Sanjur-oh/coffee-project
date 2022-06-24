@@ -2,9 +2,7 @@
 import Navbar from "./Navbar"
 import Home from "./pages/Home"
 import CoffeePage from "./pages/CoffeePage"
-import Coffee from "./pages/Coffee"
-// import Login from "./pages/Login"
-// import CreateUser from ".pages/CreateUser";
+import Profile from "./pages/Profile"
 import Logout from "./pages/Logout"
 import PartnerPage from "./pages/PartnerPage"
 import Partner from "./pages/Partner"
@@ -72,10 +70,8 @@ function App() {
         <Routes>
             {/* <Route path="/testing" />   */}
             <Route path="/" element={<Home handleLogin={handleLogin} setUser={setUser} setIsAuthenticated={setIsAuthenticated}/>} />
-            {/* <Route path="/login" element={<Login />} onLogin={setUser}/> */}
-            {/* <Route path="/createuser" element={<CreateUser />} /> */}
+            <Route path="/profile" element={<Profile />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/coffees/:id" element={<Coffee />} />
             <Route path="/coffee" element={<CoffeePage />} />
             <Route path="/partners/:id" element={<Partner />} />
             <Route path="/partner" element={<PartnerPage />} />
